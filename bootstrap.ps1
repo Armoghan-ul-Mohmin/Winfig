@@ -70,7 +70,7 @@ $Global:RepoPath       = if (Test-Path $Global:OneDrivePath) {
 } else {
     "$Global:LocalDocsPath\winfig"
 }
-$Global:InstallFontsScript = Join-Path $Global:RepoPath "Install-Fonts.ps1"
+$Global:InstallFontsScript = Join-Path $Global:RepoPath "Scripts/Install-Fonts.ps1"
 
 # --- Prevent infinite elevation loops when run via iwr|iex ------------------
 $global:WinfigElevFlag = Join-Path $env:TEMP "winfig_elev_attempt.flag"

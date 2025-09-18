@@ -229,6 +229,178 @@ function Invoke-WithProgress {
     }
 }
 
+function Test-Prerequisites {
+    Show-Progress "Checking system prerequisites..."
+
+    # Check Windows version
+    $osVersion = [System.Environment]::OSVersion.Version
+    if ($osVersion.Major -lt 10) {
+        Show-Error "Windows 10 or later is required. Current version: $($osVersion)"
+        return $false
+    }
+
+    # Check internet connection
+    try {
+        $null = Invoke-WebRequest -Uri "https://github.com" -UseBasicParsing -TimeoutSec 2
+    } catch {
+        Show-Error "Internet connection is required but not available"
+        return $false
+    }
+
+    # Check available disk space
+    $drive = Get-PSDrive -Name (Get-Location).Drive.Name
+    if ($drive.Free / 1GB -lt 2) {
+        Show-Warning "Low disk space (less than 2GB free). Installation may fail."
+    }
+
+    return $true
+}
+
+function Test-RestorePointCapability {
+    # Check if we can create restore points
+    try {
+        # Check if we're on Windows
+        if ((-not $IsWindows) -and ($env:OS -ne "Windows_NT")) {
+            return $false
+        }
+
+        # Check Windows edition (only available on Workstation versions)
+        $os = Get-CimInstance -ClassName Win32_OperatingSystem -ErrorAction Stop
+        if ($os.ProductType -ne 1) { # Not Workstation version
+            return $false
+        }
+
+        # Check if System Restore is enabled
+        try {
+            $restoreSettings = Get-ComputerRestorePoint -ErrorAction Stop
+            if (-not $restoreSettings) {
+                return $false
+            }
+        } catch {
+            # If we can't check restore settings, assume it might be available
+        }
+
+        return $true
+    } catch {
+        return $false
+    }
+}
+
+function New-RestorePoint {
+    param(
+        [string]$Description = "Winfig Bootstrap Installation",
+        [ValidateSet("APPLICATION_INSTALL", "APPLICATION_UNINSTALL", "DEVICE_DRIVER_INSTALL", "MODIFY_SETTINGS")]
+        [string]$EventType = "APPLICATION_INSTALL"
+    )
+
+    try {
+        # First try using Checkpoint-Computer (Windows 8.1/Server 2012 R2 and later)
+        if (Get-Command Checkpoint-Computer -ErrorAction SilentlyContinue) {
+            $restorePointName = "Winfig_Bootstrap_$(Get-Date -Format 'yyyyMMdd_HHmmss')"
+            Checkpoint-Computer -Description $restorePointName -RestorePointType $EventType
+            return @{ Success = $true; SequenceNumber = 0; Method = "Checkpoint-Computer" }
+        }
+
+        # Fallback to P/Invoke method for older systems
+        Show-Warning "Checkpoint-Computer not available, trying P/Invoke method"
+
+        # Load the required assembly
+        Add-Type -TypeDefinition @"
+            using System;
+            using System.Runtime.InteropServices;
+
+            public class SystemRestore {
+                [DllImport("srclient.dll")]
+                public static extern int SRSetRestorePointW(ref RESTOREPOINTINFO pRestorePtSpec, out STATEMGRSTATUS pSMgrStatus);
+
+                [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+                public struct RESTOREPOINTINFO {
+                    public int dwEventType;
+                    public int dwRestorePtType;
+                    public long llSequenceNumber;
+                    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+                    public string szDescription;
+                }
+
+                [StructLayout(LayoutKind.Sequential)]
+                public struct STATEMGRSTATUS {
+                    public uint nStatus;
+                    public long llSequenceNumber;
+                }
+            }
+"@ -ErrorAction Stop
+
+        # Create restore point information
+        $restoreInfo = New-Object -TypeName "SystemRestore+RESTOREPOINTINFO"
+        $restoreInfo.dwEventType = 100  # BEGIN_SYSTEM_CHANGE
+        $restoreInfo.dwRestorePtType = 0  # APPLICATION_INSTALL
+        $restoreInfo.llSequenceNumber = 0
+        $restoreInfo.szDescription = $Description
+
+        $status = New-Object -TypeName "SystemRestore+STATEMGRSTATUS"
+
+        # Create the restore point
+        $result = [SystemRestore]::SRSetRestorePointW([ref]$restoreInfo, [ref]$status)
+
+        if ($result -eq 0) {
+            return @{ Success = $true; SequenceNumber = $status.llSequenceNumber; Method = "P/Invoke" }
+        } else {
+            return @{ Success = $false; Error = "Failed to create restore point. Error code: $result" }
+        }
+    } catch {
+        # If both methods fail, check if system restore is enabled
+        try {
+            $systemRestore = Get-ComputerRestorePoint -ErrorAction SilentlyContinue
+            if (-not $systemRestore) {
+                return @{ Success = $false; Error = "System Restore is not enabled on this system" }
+            }
+        } catch {}
+
+        return @{ Success = $false; Error = $_.Exception.Message }
+    }
+}
+
+function Request-RestorePoint {
+    $choice = Show-Menu -Title "System Restore Point" `
+        -Options @("Yes, create a system restore point (recommended)", "No, continue without restore point") `
+        -Prompt "Would you like to create a system restore point before proceeding?"
+
+    if ($choice -eq 0) {
+        Show-Progress "Creating system restore point..."
+
+        if (-not (Test-RestorePointCapability)) {
+            Show-Warning "System restore points are not available on this Windows edition"
+
+            $continueChoice = Show-Menu -Title "Continue Installation?" `
+                -Options @("Yes, continue without restore point", "No, exit the installation") `
+                -Prompt "Would you like to continue without a restore point?"
+
+            return ($continueChoice -eq 0)
+        }
+
+        $result = New-RestorePoint -Description "Winfig Bootstrap - Pre-installation state"
+
+        if ($result.Success) {
+            $message = "System restore point created successfully"
+            if ($result.SequenceNumber -ne 0) {
+                $message += " (Sequence: $($result.SequenceNumber))"
+            }
+            Show-Success $message
+            return $true
+        } else {
+            Show-Warning "Failed to create system restore point: $($result.Error)"
+
+            $continueChoice = Show-Menu -Title "Continue Installation?" `
+                -Options @("Yes, continue without restore point", "No, exit the installation") `
+                -Prompt "Would you like to continue without a restore point?"
+
+            return ($continueChoice -eq 0)
+        }
+    }
+
+    return $true
+}
+
 # ============================================================================ #
 #                               Core Functions                                 #
 # ============================================================================ #
@@ -285,8 +457,23 @@ Clear-Host
 # Show welcome screen
 Show-Header "Winfig Bootstrap" "Setting up your development environment"
 
-# --- Step 1: Set PowerShell Execution Policy ---
-Show-Step -StepNo 1 -StepTitle "Execution Policy Configuration" -StepDescription "Configuring script execution permissions"
+# Check prerequisites
+if (-not (Test-Prerequisites)) {
+    exit 1
+}
+
+# --- Step 1: Restore Point Creation ---
+Write-Host ""
+Show-Step -StepNo 1 -StepTitle "System Protection" -StepDescription "Creating restore point before making changes"
+
+if (-not (Request-RestorePoint)) {
+    Show-Error "Installation cancelled by user"
+    exit 1
+}
+
+# --- Step 2: Set PowerShell Execution Policy ---
+Write-Host ""
+Show-Step -StepNo 2 -StepTitle "Execution Policy Configuration" -StepDescription "Configuring script execution permissions"
 
 $executionPolicies = Get-ExecutionPolicy -List
 Write-Host ""
@@ -307,9 +494,9 @@ Invoke-WithProgress -Message "Setting execution policy..." `
     -SuccessMessage "Execution policy set to '$selectedPolicy' for scope '$selectedScope'" `
     -ErrorMessage "Failed to set execution policy"
 
-# --- Step 2: Install Package Managers ---
+# --- Step 3: Install Package Managers ---
 Write-Host ""
-Show-Step -StepNo 2 -StepTitle "Package Manager Setup" -StepDescription "Installing Winget and Chocolatey"
+Show-Step -StepNo 3 -StepTitle "Package Manager Setup" -StepDescription "Installing Winget and Chocolatey"
 
 # Winget
 if (Get-Command winget -ErrorAction SilentlyContinue) {
@@ -317,17 +504,106 @@ if (Get-Command winget -ErrorAction SilentlyContinue) {
 } else {
     $wingetResult = Invoke-WithProgress -Message "Installing Winget..." `
         -ScriptBlock {
+            # First install the required Microsoft UI XAML framework
+            $xamlFrameworkUrl = "https://www.nuget.org/api/v2/package/Microsoft.UI.Xaml/2.8.6"
+            $xamlFrameworkTemp = "$env:TEMP\Microsoft.UI.Xaml.2.8.6.nupkg"
+            $xamlFrameworkDir = "$env:TEMP\Microsoft.UI.Xaml.2.8.6"
+
+            # Download and extract the XAML framework
+            Invoke-WebRequest -Uri $xamlFrameworkUrl -OutFile $xamlFrameworkTemp -UseBasicParsing
+            Expand-Archive -Path $xamlFrameworkTemp -DestinationPath $xamlFrameworkDir -Force
+
+            # Find and install the MSIX framework package
+            $xamlMsix = Get-ChildItem -Path $xamlFrameworkDir -Recurse -Filter "*.msix" | Where-Object { $_.Name -like "*x64*" -or $_.Name -like "*neutral*" }
+            if ($xamlMsix) {
+                Add-AppxPackage -Path $xamlMsix.FullName -ErrorAction Stop
+            }
+
+            # Clean up temporary files
+            Remove-Item $xamlFrameworkTemp -Force -ErrorAction SilentlyContinue
+            Remove-Item $xamlFrameworkDir -Recurse -Force -ErrorAction SilentlyContinue
+
+            # Now install Winget
             $wingetBundle = "$env:TEMP\winget.msixbundle"
-            Invoke-WebRequest -Uri "https://aka.ms/getwinget" -OutFile $wingetBundle -UseBasicParsing
-            Add-AppxPackage -Path $wingetBundle
+            $downloadUrl = "https://github.com/microsoft/winget-cli/releases/latest/download/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle"
+
+            Invoke-WebRequest -Uri $downloadUrl -OutFile $wingetBundle -UseBasicParsing
+
+            # Verify the file was downloaded correctly
+            if (-not (Test-Path $wingetBundle)) {
+                throw "Failed to download winget package"
+            }
+
+            # Install the package
+            Add-AppxPackage -Path $wingetBundle -ErrorAction Stop
+
+            # Clean up
             Remove-Item $wingetBundle -Force -ErrorAction SilentlyContinue
-            return Get-Command winget -ErrorAction SilentlyContinue
+
+            # Verify installation
+            $wingetCmd = Get-Command winget -ErrorAction SilentlyContinue
+            if (-not $wingetCmd) {
+                # Sometimes it needs a moment to register
+                Start-Sleep -Seconds 3
+                $wingetCmd = Get-Command winget -ErrorAction SilentlyContinue
+            }
+
+            return $wingetCmd
         } `
         -SuccessMessage "Winget installed successfully" `
         -ErrorMessage "Failed to install Winget"
 
     if (-not $wingetResult) {
-        Show-Warning "Please install Winget manually from: https://aka.ms/getwinget"
+        Show-Warning "Winget installation failed. Trying Store method..."
+
+        # Alternative method using Microsoft Store
+        $alternativeResult = Invoke-WithProgress -Message "Opening Microsoft Store for Winget..." `
+            -ScriptBlock {
+                # Try to open Microsoft Store to App Installer page
+                try {
+                    Start-Process "ms-windows-store://pdp/?productid=9NBLGGH4NNS1"
+                    Write-Host "Please complete the installation in Microsoft Store and press any key to continue..." -ForegroundColor Yellow
+                    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                } catch {
+                    # Fallback to URL
+                    Start-Process "https://www.microsoft.com/store/productId/9NBLGGH4NNS1"
+                    Write-Host "Microsoft Store opened in browser. Please install App Installer and press any key to continue..." -ForegroundColor Yellow
+                    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+                }
+
+                # Check if installation worked
+                Start-Sleep -Seconds 5
+                $wingetCmd = Get-Command winget -ErrorAction SilentlyContinue
+                if (-not $wingetCmd) {
+                    Start-Sleep -Seconds 10
+                    $wingetCmd = Get-Command winget -ErrorAction SilentlyContinue
+                }
+
+                return $wingetCmd
+            } `
+            -SuccessMessage "Winget installed via Microsoft Store" `
+            -ErrorMessage "Store installation failed"
+
+        if (-not $alternativeResult) {
+            Show-Warning "All Winget installation methods failed."
+            Show-Warning "Please install Winget manually using one of these methods:"
+            Write-Host ""
+            Write-Color "  1. Microsoft Store: " -ForegroundColor Yellow -NoNewline
+            Write-Host "https://www.microsoft.com/store/productId/9NBLGGH4NNS1" -ForegroundColor Cyan
+            Write-Color "  2. Direct download: " -ForegroundColor Yellow -NoNewline
+            Write-Host "https://aka.ms/getwinget" -ForegroundColor Cyan
+            Write-Host ""
+            Write-Color "  After installation, please restart PowerShell and run this script again." -ForegroundColor Yellow
+            Write-Host ""
+
+            $continueChoice = Show-Menu -Title "Continue without Winget?" `
+                -Options @("Yes, continue without Winget", "No, exit and install manually") `
+                -Prompt "Some features may not work without Winget"
+
+            if ($continueChoice -ne 0) {
+                exit 1
+            }
+        }
     }
 }
 
@@ -350,9 +626,9 @@ if (Get-Command choco -ErrorAction SilentlyContinue) {
     }
 }
 
-# --- Step 3: Install Git ---
+# --- Step 4: Install Git ---
 Write-Host ""
-Show-Step -StepNo 3 -StepTitle "Git Installation" -StepDescription "Installing version control system"
+Show-Step -StepNo 4 -StepTitle "Git Installation" -StepDescription "Installing version control system"
 
 if (Get-Command git -ErrorAction SilentlyContinue) {
     Show-Success "Git is already installed"
@@ -370,9 +646,9 @@ if (Get-Command git -ErrorAction SilentlyContinue) {
     }
 }
 
-# --- Step 4: Clone Repository ---
+# --- Step 5: Clone Repository ---
 Write-Host ""
-Show-Step -StepNo 4 -StepTitle "Repository Setup" -StepDescription "Cloning Winfig project repository"
+Show-Step -StepNo 5 -StepTitle "Repository Setup" -StepDescription "Cloning Winfig project repository"
 
 if (Test-Path $Global:RepoPath) {
     Show-Success "Repository already exists at: $Global:RepoPath"
@@ -383,9 +659,9 @@ if (Test-Path $Global:RepoPath) {
         -ErrorMessage "Failed to clone repository"
 }
 
-# --- Step 5: Install Fonts ---
+# --- Step 6: Install Fonts ---
 Write-Host ""
-Show-Step -StepNo 5 -StepTitle "Font Installation" -StepDescription "Installing required fonts"
+Show-Step -StepNo 6 -StepTitle "Font Installation" -StepDescription "Installing required fonts"
 
 if (Test-Path $Global:InstallFontsScript) {
     $fontResult = Invoke-WithProgress -Message "Running font installation script..." `
@@ -396,9 +672,9 @@ if (Test-Path $Global:InstallFontsScript) {
     Show-Warning "Font installation script not found at: $Global:InstallFontsScript"
 }
 
-# --- Step 6: Dotfiles Configuration ---
+# --- Step 7: Dotfiles Configuration ---
 Write-Host ""
-Show-Step -StepNo 6 -StepTitle "Dotfiles Setup" -StepDescription "Configuring user settings (Coming Soon)"
+Show-Step -StepNo 7 -StepTitle "Dotfiles Setup" -StepDescription "Configuring user settings (Coming Soon)"
 Show-Progress -Message "Dotfiles configuration is under development" -Complete $true
 
 # --- Completion ---

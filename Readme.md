@@ -15,9 +15,80 @@
 
 </div>
 
-A small, battle-tested Windows configuration toolkit to bootstrap a developer-friendly environment on a fresh install.
+A comprehensive Windows configuration toolkit designed to streamline Windows 11 installations and create a developer-friendly environment on fresh installs.
 
-##  Contributing
+## Table of Contents
+- [Features](#features)
+- [Windows 11 Installation Bypass](#windows-11-installation-bypass)
+  - [Quick Installation Guide](#quick-installation-guide)
+    - [Registry Method](#registry-method)
+- [Troubleshooting Failed Installations](#troubleshooting-failed-installations)
+- [Contributing](#contributing)
+  - [Development Workflow](#development-workflow)
+  - [Contribution Standards](#contribution-standards)
+- [Disclaimer](#disclaimer)
+- [License](#license)
+
+## Features
+- **Hardware Requirement Bypass**: Disable TPM 2.0, RAM, and Secure Boot checks
+- **OOBE Customization**: Bypass Out-Of-Box Experience restrictions
+- **Local Account Creation**: Enable local account setup without Microsoft Account
+- **Windows Configuration**: Automate system settings for optimal performance
+
+## Windows 11 Installation Bypass
+
+### Quick Installation Guide
+
+Follow these steps during Windows 11 installation to bypass system requirements:
+
+#### Registry Method
+
+1. **Boot from Windows 11 Install Media**
+   - Boot off your Windows 11 installation disk
+   - The first screen should ask you to choose the installation language
+
+   ![Windows 11 Install Language](img/1.png)
+
+2. **Open Command Prompt**
+   - Press `Shift + F10` to open a command prompt window during setup
+
+   ![Command Prompt](img/2.png)
+
+3. **Execute Registry Commands**
+   - Copy and paste the following commands **one by one** in the command prompt:
+
+   Bypass TPM 2.0 Requirement
+   ```batch
+   reg add "HKLM\SYSTEM\Setup\LabConfig" /v BypassTPMCheck /t REG_DWORD /d 1 /f
+   ```
+   Bypass RAM Requirement Check
+   ```batch
+   reg add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f
+    ```
+   Bypass Secure Boot Check
+   ```batch
+   reg add "HKLM\SYSTEM\Setup\LabConfig" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f
+    ```
+    Bypass Microsoft Account Requirement
+    ```batch
+   reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE\BypassNRO" /v NetworkRequirement /t REG_DWORD /d 0 /f
+   ```
+
+   ![Registry Commands](img/3.png)
+
+4. **Complete Installation**
+   - All bypass settings are now configured
+   - Continue with the Windows 11 installation normally
+   - You can now create a local account without Microsoft Account requirements
+
+## Troubleshooting Failed Installations
+If Windows 11 installation fails due to hardware requirements:
+1. Restart the installation process
+2. Press `Shift + F10` as soon as the language selection appears
+3. Execute the registry commands before proceeding with installation
+4. Continue with the installation
+
+## Contributing
 
 Professional contributions are welcomed from the development community.
 
@@ -36,5 +107,10 @@ Professional contributions are welcomed from the development community.
 - **Documentation** - Maintain comprehensive documentation standards
 - **Quality Assurance** - Implement comprehensive testing for new functionality
 
+## Disclaimer
+
+⚠️ **Disclaimer**: Modifying your system registry can have unintended consequences—proceed at your own risk and ensure you understand the potential impact on your system.
+
 ## License
+
 This project is distributed under the [**MIT License**](LICENSE) © 2025 Armoghan-ul-Mohmin

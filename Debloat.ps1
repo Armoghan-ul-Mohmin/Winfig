@@ -248,8 +248,13 @@ if ($RunWinutil -match '^[Yy]') {
             Write-Log "Launching Chris Titus Tech Winutil..." "Info"
             Write-Log "Please wait while Winutil loads..." "Info"
 
-            # Launch Winutil
-            Invoke-Expression "iwr -useb https://christitus.com/win | iex"
+            # Create the command to run in the new admin window
+            $WinutilCommand = "iwr -useb https://christitus.com/win | iex; Read-Host 'Press Enter to close this window'"
+
+            # Launch new admin PowerShell window
+             Start-Process PowerShell -ArgumentList "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", $WinutilCommand -Verb RunAs -Wait
+
+            Write-Log "Winutil completed!" "Success"
         }
         else {
             Write-Log "Winutil launch cancelled. Preset file is available on Desktop." "Info"
@@ -276,10 +281,17 @@ Write-Log "Would you like to run the Winfig Bootstrap script for additional syst
 $RunWinfig = Read-Host "Run Winfig Bootstrap? (Y/N)"
 
 if ($RunWinfig -match '^[Yy]') {
-    Write-Log "Launching Winfig Bootstrap..." "Info"
-    Write-Log "Please wait while Winfig Bootstrap loads..." "Info"
+    Write-Log "Launching Winfig Bootstrap in new admin window..." "Info"
+    Write-Log "Please wait while the new PowerShell window opens..." "Info"
+
     try {
-        Invoke-Expression "iwr -useb https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1 | iex"
+        # Create the command to run in the new admin window
+        $BootstrapCommand = "iwr -useb https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1 | iex; Read-Host 'Press Enter to close this window'"
+
+        # Launch new admin PowerShell window
+        Start-Process PowerShell -ArgumentList "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", $BootstrapCommand -Verb RunAs -Wait
+
+        Write-Log "Bootstrap script completed!" "Success"
     }
     catch {
         Write-Log "Failed to launch Winfig Bootstrap: $($_.Exception.Message)" "Error"

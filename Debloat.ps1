@@ -296,6 +296,26 @@ else {
     Write-Log "Skipping Winutil. Script execution complete." "Info"
 }
 
+# Ask User About Running Winfig Bootstrap
+Write-Log "" "Info"
+Write-Log "Would you like to run the Winfig Bootstrap script for additional system optimization?" "Info"
+$RunWinfig = Read-Host "Run Winfig Bootstrap? (Y/N)"
+
+if ($RunWinfig -match '^[Yy]') {
+    Write-Log "Launching Winfig Bootstrap..." "Info"
+    Write-Log "Please wait while Winfig Bootstrap loads..." "Info"
+    try {
+        Invoke-Expression "iwr -useb https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1 | iex"
+    }
+    catch {
+        Write-Log "Failed to launch Winfig Bootstrap: $($_.Exception.Message)" "Error"
+        Write-Log "You can manually run it from: https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1" "Info"
+    }
+}
+else {
+    Write-Log "Skipping Winfig Bootstrap. Script execution complete." "Info"
+}
+
 Write-Log "" "Info"
 Write-Log "Thank you for using the Windows 11 Debloating Script!" "Success"
 

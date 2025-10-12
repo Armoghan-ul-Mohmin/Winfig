@@ -1,29 +1,3 @@
-<#
-.SYNOPSIS
-    Windows 11 Debloating Script
-
-.DESCRIPTION
-    A PowerShell script that safely removes bloatware applications from Windows 11.
-    Compatible with PowerShell 5.1 and PowerShell 7.x.
-
-.NOTES
-    Script Name  : Debloat.ps1
-    Author       : Armoghan-ul-Mohmin
-    Date         : 2025-10-12
-    Version      : 1.0.0
-
-    Requirements:
-    - Windows 10/11
-    - PowerShell 5.1 or higher
-    - Administrator privileges (recommended)
-
-.EXAMPLE
-    .\Debloat.ps1
-
-.EXAMPLE
-    Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1" | Invoke-Expression
-#>
-
 [CmdletBinding()]
 param()
 

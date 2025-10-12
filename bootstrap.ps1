@@ -1,34 +1,3 @@
-﻿#!/usr/bin/env powershell
-<#
-===============================================================================
-Script Name  : bootstrap.ps1
-Author       : Armoghan-ul-Mohmin
-Date         : 2025-10-04
-Version      : 1.0.0
--------------------------------------------------------------------------------
-Description:
-    A small, battle-tested Windows configuration toolkit to bootstrap a developer-friendly environment on a fresh install.
-
-Workflow:
-    1. Environment Validation
-    2. System Restore Point Creation
-    3. Prerequisite Installation
-    4. Repository Cloning
-    5. Configuration Execution
-    6. Cleanup and Finalization
-
-
--------------------------------------------------------------------------------
-Usage:
-    # Run directly from the web:
-        Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1" | Invoke-Expression
-
-    # Execute after downloading:
-        .\bootstrap.ps1
-
-===============================================================================
-#>
-
 #  Set UTF-8 Encoding with BOM for Output
 $utf8WithBom = New-Object System.Text.UTF8Encoding $true
 $OutputEncoding = $utf8WithBom

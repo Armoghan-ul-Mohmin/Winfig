@@ -1,0 +1,2 @@
+Hack.zip filter=lfs diff=lfs merge=lfs -text
+JetBrainsMono.zip filter=lfs diff=lfs merge=lfs -text

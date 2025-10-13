@@ -18,7 +18,7 @@
 
 **Complete Windows 11 configuration ecosystem for clean installations and enterprise-ready development environments**
 
-*Bypass installation requirements • Remove bloatware • Optimize system performance • Install developer fonts • Setup development tools • Enterprise bootstrap system*
+*Bypass installation requirements • Remove bloatware • Optimize system performance • Install developer fonts • Apply custom cursors • Setup development tools • Enterprise bootstrap system*
 
 </div>
 
@@ -33,15 +33,19 @@
   - [Registry Optimizations](#️-registry-optimizations)
   - [Advanced Tool Integration](#️-advanced-tool-integration)
   - [Usage Examples](#-usage-examples)
-- [Font Installation System](#️-font-installation-system)
-  - [Supported Fonts](#-supported-fonts)
-  - [Installation Features](#️-installation-features)
-  - [Usage Examples](#-usage-examples-1)
 - [Winfig Bootstrap System](#️-winfig-bootstrap-system)
   - [Bootstrap Features](#-bootstrap-features)
   - [Bootstrap Workflow](#-bootstrap-workflow)
   - [Execution Methods](#️-execution-methods)
   - [Safety Features](#️-safety-features)
+- [Font Installation System](#️-font-installation-system)
+  - [Supported Fonts](#-supported-fonts)
+  - [Installation Features](#️-installation-features)
+  - [Usage Examples](#-usage-examples-1)
+- [Cursor Installation System](#️-cursor-installation-system)
+  - [Available Cursor Themes](#-available-cursor-themes)
+  - [Installation Process](#️-installation-process)
+  - [Usage Guide](#-usage-guide)
 - [Complete Setup Guide](#-complete-setup-guide)
   - [Recommended Script Sequence](#-recommended-script-sequence)
   - [Alternative Workflows](#️-alternative-workflows)
@@ -67,6 +71,7 @@
 ### 🧹 System Cleanup
 - **52+ App Removal** - Comprehensive bloatware elimination
 - **Professional Fonts** - Developer-grade font installation
+- **Custom Cursors** - Modern cursor theme installation
 - **Safe Execution** - Only removes existing applications
 - **Error Handling** - Graceful failure recovery
 
@@ -82,6 +87,7 @@
 - **Winutil Support** - Chris Titus Tech tool integration
 - **Bootstrap System** - Enterprise development environment setup
 - **Font Management** - Professional font installation system
+- **Cursor Theming** - Modern cursor installation and management
 - **Package Manager Integration** - Chocolatey + Winget automation
 - **Git Integration** - Automatic version control setup
 - **Custom Presets** - Pre-configured optimization profiles
@@ -371,6 +377,103 @@ Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Win
 ```
 > **Advantages**: Full toolkit installation • Development environment setup • Repository cloning • System backup
 
+## 🏗️ Winfig Bootstrap System
+
+> **Enterprise-grade Windows development environment configuration platform**
+
+<div align="center">
+
+**🎯 Complete System Transformation in One Command**
+
+</div>
+
+The Winfig Bootstrap system provides a comprehensive solution for setting up a complete Windows development environment. This enterprise-grade toolkit automatically configures your system with essential tools, package managers, and development utilities.
+
+### 🚀 Bootstrap Features
+
+<table>
+<tr>
+<td width="50%">
+
+**🔍 System Validation**
+- Administrator privilege verification
+- Windows 10/11 compatibility check
+- PowerShell version validation
+- Internet connectivity testing
+- Disk space requirements
+- Execution policy verification
+
+**🛠️ Tool Installation**
+- Chocolatey package manager
+- Windows Package Manager (Winget)
+- Git version control system
+- Automatic PATH configuration
+
+</td>
+<td width="50%">
+
+**🔒 Safety & Backup**
+- System restore point creation
+- Environment validation
+- Error handling & recovery
+- Detailed logging system
+- Safe rollback capabilities
+
+**� Repository Management**
+- Automatic Winfig cloning
+- Version control setup
+- Local toolkit access
+- Offline functionality
+
+</td>
+</tr>
+</table>
+
+### 📋 Bootstrap Workflow
+
+<div align="center">
+
+| Phase | Process | Duration | Description |
+|-------|---------|----------|-------------|
+| **1️⃣ Validation** | Environment Check | 30s | System compatibility verification |
+| **2️⃣ Backup** | Restore Point | 60s | Create system recovery checkpoint |
+| **3️⃣ Prerequisites** | Package Managers | 2-5min | Install Chocolatey, Winget, Git |
+| **4️⃣ Repository** | Clone Winfig | 30s | Download complete toolkit locally |
+| **5️⃣ Completion** | Summary & Cleanup | 15s | Final status and log generation |
+
+**⏱️ Total Time: ~4-7 minutes** (depending on internet speed)
+
+</div>
+
+### 🎛️ Execution Methods
+
+#### 🌐 Direct Web Launch (Recommended)
+```powershell
+Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1" | Invoke-Expression
+```
+
+#### 📁 Through Debloat Script Integration
+```powershell
+# Run Debloat script - Bootstrap option appears after completion
+Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1" | Invoke-Expression
+```
+
+### �🛡️ Safety Features
+
+<div align="center">
+
+| Safety Measure | Description | Protection Level |
+|----------------|-------------|------------------|
+| **Existence Check** | Only removes apps if installed | 🟢 High |
+| **Error Handling** | Graceful failure recovery | 🟢 High |
+| **Progress Feedback** | Real-time status updates | 🟡 Medium |
+| **Compatibility** | PowerShell 5.1 and 7.x support | 🟢 High |
+| **Registry Validation** | Safe registry key creation | 🟢 High |
+| **System Restore** | Automatic backup point creation | 🟢 High |
+| **Administrator Check** | Elevated privileges verification | 🟢 High |
+
+</div>
+
 ## 🔤 Font Installation System
 
 > **Professional font management for development environments**
@@ -508,102 +611,289 @@ The Font Installation System provides automated installation of essential develo
 
 </div>
 
-## 🏗️ Winfig Bootstrap System
+## 🖱️ Cursor Installation System
 
-> **Enterprise-grade Windows development environment configuration platform**
+> **Modern cursor themes for enhanced Windows experience**
 
 <div align="center">
 
-**🎯 Complete System Transformation in One Command**
+**🎯 Professional Cursors • Interactive Installation • Symlink Management**
 
 </div>
 
-The Winfig Bootstrap system provides a comprehensive solution for setting up a complete Windows development environment. This enterprise-grade toolkit automatically configures your system with essential tools, package managers, and development utilities.
+The Cursor Installation System provides automated setup of modern cursor themes with Windows system integration and interactive installation guidance.
 
-### 🚀 Bootstrap Features
+### 🎨 Available Cursor Themes
+
+<div align="center">
+
+**🖱️ Professional Cursor Collections for Enhanced Windows Experience**
+
+*Choose from modern, carefully crafted cursor themes designed for productivity and style*
+
+</div>
+
+---
+
+#### 🌟 **Sunity Theme Collection**
+
+<div align="center">
+
+**Modern • Clean • Professional**
+
+| Dark Variant | Light Variant |
+|:------------:|:-------------:|
+| ![Sunity Dark Theme](img/6.png) | ![Sunity Light Theme](img/7.png) |
+| *Perfect for dark mode enthusiasts* | *Ideal for light interface users* |
+
+</div>
 
 <table>
 <tr>
-<td width="50%">
+<td width="25%">
 
-**🔍 System Validation**
-- Administrator privilege verification
-- Windows 10/11 compatibility check
-- PowerShell version validation
-- Internet connectivity testing
-- Disk space requirements
-- Execution policy verification
-
-**🛠️ Tool Installation**
-- Chocolatey package manager
-- Windows Package Manager (Winget)
-- Git version control system
-- Automatic PATH configuration
+**� Design Focus**
+- Minimalist aesthetics
+- Sharp, clean lines
+- Consistent iconography
+- Smooth transitions
 
 </td>
-<td width="50%">
+<td width="25%">
 
-**🔒 Safety & Backup**
-- System restore point creation
-- Environment validation
-- Error handling & recovery
-- Detailed logging system
-- Safe rollback capabilities
+**✨ Key Features**
+- Fluid animations
+- High contrast visibility
+- Ergonomic pointer design
+- Universal compatibility
 
-**� Repository Management**
-- Automatic Winfig cloning
-- Version control setup
-- Local toolkit access
-- Offline functionality
+</td>
+<td width="25%">
+
+**🎨 Visual Style**
+- Contemporary design
+- Subtle shadow effects
+- Balanced proportions
+- Professional appearance
+
+</td>
+<td width="25%">
+
+**🏢 Best Use Cases**
+- Office environments
+- Development work
+- Daily productivity
+- Extended usage sessions
 
 </td>
 </tr>
 </table>
 
-### 📋 Bootstrap Workflow
+---
+
+#### 💎 **Win 11 Concept Theme Collection**
 
 <div align="center">
 
-| Phase | Process | Duration | Description |
-|-------|---------|----------|-------------|
-| **1️⃣ Validation** | Environment Check | 30s | System compatibility verification |
-| **2️⃣ Backup** | Restore Point | 60s | Create system recovery checkpoint |
-| **3️⃣ Prerequisites** | Package Managers | 2-5min | Install Chocolatey, Winget, Git |
-| **4️⃣ Repository** | Clone Winfig | 30s | Download complete toolkit locally |
-| **5️⃣ Completion** | Summary & Cleanup | 15s | Final status and log generation |
+**Modern • Refined • Windows 11 Inspired**
 
-**⏱️ Total Time: ~4-7 minutes** (depending on internet speed)
+| Theme Preview |
+|:-------------:|
+| ![Win 11 Concept Theme](img/8.jpg) |
+| *Available in both Dark and Light variants* |
 
 </div>
 
-### 🎛️ Execution Methods
+<table>
+<tr>
+<td width="25%">
 
-#### 🌐 Direct Web Launch (Recommended)
-```powershell
-Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1" | Invoke-Expression
-```
+**🎯 Design Focus**
+- Windows 11 aesthetic
+- Fluent design principles
+- Modern cursor shapes
+- Consistent with OS theme
 
-#### 📁 Through Debloat Script Integration
-```powershell
-# Run Debloat script - Bootstrap option appears after completion
-Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1" | Invoke-Expression
-```
+</td>
+<td width="25%">
 
-### �🛡️ Safety Features
+**✨ Key Features**
+- Crisp pixel-perfect design
+- Enhanced visibility
+- Smooth cursor tracking
+- Native Windows feel
+
+</td>
+<td width="25%">
+
+**🎨 Visual Style**
+- Microsoft design language
+- Subtle transparency effects
+- Rounded corner elements
+- Contemporary appearance
+
+</td>
+<td width="25%">
+
+**🏢 Best Use Cases**
+- Windows 11 systems
+- Modern interfaces
+- Gaming environments
+- Creative applications
+
+</td>
+</tr>
+</table>
 
 <div align="center">
 
-| Safety Measure | Description | Protection Level |
-|----------------|-------------|------------------|
-| **Existence Check** | Only removes apps if installed | 🟢 High |
-| **Error Handling** | Graceful failure recovery | 🟢 High |
-| **Progress Feedback** | Real-time status updates | 🟡 Medium |
-| **Compatibility** | PowerShell 5.1 and 7.x support | 🟢 High |
-| **Registry Validation** | Safe registry key creation | 🟢 High |
-| **System Restore** | Automatic backup point creation | 🟢 High |
-| **Administrator Check** | Elevated privileges verification | 🟢 High |
+---
+
+**💡 Pro Tip**: Both themes support Dark and Light variants that automatically adapt to your system theme preferences
+
+**🎯 Installation**: Interactive script guides you through theme and variant selection
+
+---
 
 </div>
+
+### ⚙️ Installation Process
+
+<div align="center">
+
+**🔧 Automated Symlink Creation & Interactive Installation**
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+**🛠️ Technical Features**
+- Symbolic link creation to Windows cursor directory
+- Administrator privilege handling
+- Interactive theme and variant selection
+- Automatic Explorer folder opening
+- Built-in installation instructions
+
+**🎯 User Experience**
+- Step-by-step guided installation
+- Visual theme preview
+- One-click folder access
+- MessageBox instruction display
+- Safe fallback options
+
+</td>
+<td width="50%">
+
+**🔧 System Integration**
+- Windows cursor directory management (`C:\Windows\Resources\Cursors`)
+- Proper symlink validation and verification
+- Force remove existing installations
+- Registry-based cursor registration
+- System-wide cursor availability
+
+**🛡️ Safety & Validation**
+- Administrator privilege verification
+- Source folder existence checking
+- Symlink integrity validation
+- Error handling with user feedback
+- Safe removal of existing installations
+
+</td>
+</tr>
+</table>
+
+### 💻 Usage Guide
+
+<div align="center">
+
+**Follow these simple steps to install custom cursors**
+
+</div>
+
+#### 🚀 Step 1: Run the Installation Script
+```powershell
+# Navigate to your Winfig repository
+cd "C:\Users\$env:USERNAME\Documents\Winfig"
+
+# Run the cursor installation script (requires admin privileges)
+.\Cursors.ps1
+```
+
+#### 🎨 Step 2: Choose Your Cursor Theme
+The script will present you with available options:
+
+![Cursor Installation Steps](img/4.png)
+*Interactive cursor theme selection*
+
+**Available Options:**
+1. **Sunity** - Modern, clean cursor design
+2. **Win 11 Concept** - Windows 11 inspired cursors
+
+#### 🌓 Step 3: Select Theme Variant
+Choose between Dark and Light variants:
+
+![Theme Selection Process](img/5.png)
+*Theme variant selection interface*
+
+**Variant Options:**
+1. **Dark** - Perfect for dark mode users
+2. **Light** - Ideal for light mode interfaces
+
+#### 🖱️ Step 4: Complete Installation
+1. **Automatic folder opening** - The script opens the selected cursor folder
+2. **Right-click on `Install.inf`** - Select "Install" from context menu
+3. **Follow Windows prompts** - Complete the cursor installation
+4. **Apply changes** - Cursors become available system-wide
+
+### 🎛️ Advanced Usage
+
+<div align="center">
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| **SourceFolder** | String | `Assets/Cursors` | Location of cursor theme folders |
+| **TargetFolder** | String | `C:\Windows\Resources\Cursors` | Windows cursor directory |
+| **Force** | Switch | `$true` | Remove existing installations |
+
+</div>
+
+#### 🔧 Custom Parameters
+```powershell
+# Custom source folder
+.\Cursors.ps1 -SourceFolder "C:\CustomCursors" -Force $true
+
+# Different target location
+.\Cursors.ps1 -TargetFolder "C:\CustomTarget" -Force $false
+```
+
+### 🎯 Installation Requirements
+
+<div align="center">
+
+| Requirement | Status | Description |
+|-------------|---------|-------------|
+| **Administrator Rights** | ✅ Required | Needed for system folder access |
+| **PowerShell 5.1+** | ✅ Required | Windows PowerShell or PowerShell Core |
+| **Cursor Assets** | ✅ Required | Theme files in Assets/Cursors folder |
+| **Windows 10/11** | ✅ Required | Modern cursor management support |
+
+</div>
+
+### 🛡️ Safety Features
+
+<div align="center">
+
+**Built-in protections for safe cursor installation**
+
+</div>
+
+- **✅ Administrator Verification** - Ensures proper permissions before execution
+- **✅ Source Validation** - Confirms cursor assets exist before processing
+- **✅ Symlink Verification** - Validates symbolic link creation success
+- **✅ Error Handling** - Graceful failure recovery with user guidance
+- **✅ Force Removal** - Safe cleanup of existing cursor installations
 
 ## 🎯 Complete Setup Guide
 
@@ -705,6 +995,19 @@ cd Winfig
 .\Install-Fonts.ps1
 ```
 
+#### 🖱️ Step 5: Cursor Installation
+```powershell
+# After repository is available locally
+cd "C:\Users\$env:USERNAME\Documents\Winfig"
+.\Cursors.ps1
+
+# The script will guide you through:
+# 1. Interactive theme selection (Sunity or Win 11 Concept)
+# 2. Variant choice (Dark or Light)
+# 3. Automatic folder opening for installation
+# 4. Right-click Install.inf and choose "Install"
+```
+
 ### ⚙️ Alternative Workflows
 
 <div align="center">
@@ -722,6 +1025,8 @@ irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1
 # 4. Choose 'Y' for Winutil when prompted
 # 5. Navigate to cloned repository and run font installer
 .\Install-Fonts.ps1
+# 6. Run cursor installation for modern themes
+.\Cursors.ps1
 ```
 
 #### 🎛️ **Workflow B: Selective Execution**
@@ -737,7 +1042,10 @@ irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.p
 # 4. Font installation
 .\Install-Fonts.ps1
 
-# 5. Winutil (optional)
+# 5. Cursor installation
+.\Cursors.ps1
+
+# 6. Winutil (optional)
 iwr -useb https://christitus.com/win | iex
 ```
 
@@ -752,6 +1060,7 @@ cd Winfig
 .\Debloat.ps1
 .\bootstrap.ps1
 .\Install-Fonts.ps1 -SystemWide $false -FontZips @("Hack.zip")
+.\Cursors.ps1 -Force $true
 ```
 
 ### ⏱️ Execution Timeline
@@ -769,10 +1078,11 @@ cd Winfig
 | **🏗️ Bootstrap** | Dev Environment | 4-7 min | Admin privileges | Complete dev setup |
 | **⚙️ Winutil** | Advanced Config | 5-10 min | Admin privileges | Professional customization |
 | **🔤 Fonts** | Font Installation | 2-3 min | Local repository | Professional fonts |
+| **🖱️ Cursors** | Cursor Themes | 1-2 min | Admin privileges | Modern cursor themes |
 
 <div align="center">
 
-**🎯 Total Time: 16-27 minutes for complete professional setup**
+**🎯 Total Time: 17-29 minutes for complete professional setup**
 
 *Note: Times may vary based on internet speed and system performance*
 

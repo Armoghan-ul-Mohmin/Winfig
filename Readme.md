@@ -18,7 +18,7 @@
 
 **Complete Windows 11 configuration ecosystem for clean installations and enterprise-ready development environments**
 
-*Bypass installation requirements • Remove bloatware • Optimize system performance • Setup development tools • Enterprise bootstrap system*
+*Bypass installation requirements • Remove bloatware • Optimize system performance • Install developer fonts • Setup development tools • Enterprise bootstrap system*
 
 </div>
 
@@ -33,11 +33,19 @@
   - [Registry Optimizations](#️-registry-optimizations)
   - [Advanced Tool Integration](#️-advanced-tool-integration)
   - [Usage Examples](#-usage-examples)
+- [Font Installation System](#️-font-installation-system)
+  - [Supported Fonts](#-supported-fonts)
+  - [Installation Features](#️-installation-features)
+  - [Usage Examples](#-usage-examples-1)
 - [Winfig Bootstrap System](#️-winfig-bootstrap-system)
   - [Bootstrap Features](#-bootstrap-features)
   - [Bootstrap Workflow](#-bootstrap-workflow)
   - [Execution Methods](#️-execution-methods)
   - [Safety Features](#️-safety-features)
+- [Complete Setup Guide](#-complete-setup-guide)
+  - [Recommended Script Sequence](#-recommended-script-sequence)
+  - [Alternative Workflows](#️-alternative-workflows)
+  - [Execution Timeline](#️-execution-timeline)
 - [Troubleshooting Failed Installations](#troubleshooting-failed-installations)
 - [Contributing](#contributing)
   - [Development Workflow](#development-workflow)
@@ -58,6 +66,7 @@
 
 ### 🧹 System Cleanup
 - **52+ App Removal** - Comprehensive bloatware elimination
+- **Professional Fonts** - Developer-grade font installation
 - **Safe Execution** - Only removes existing applications
 - **Error Handling** - Graceful failure recovery
 
@@ -72,6 +81,7 @@
 ### 🔧 Advanced Integration
 - **Winutil Support** - Chris Titus Tech tool integration
 - **Bootstrap System** - Enterprise development environment setup
+- **Font Management** - Professional font installation system
 - **Package Manager Integration** - Chocolatey + Winget automation
 - **Git Integration** - Automatic version control setup
 - **Custom Presets** - Pre-configured optimization profiles
@@ -361,6 +371,143 @@ Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Win
 ```
 > **Advantages**: Full toolkit installation • Development environment setup • Repository cloning • System backup
 
+## 🔤 Font Installation System
+
+> **Professional font management for development environments**
+
+<div align="center">
+
+**🎯 Developer-Grade Fonts • System-Wide Installation • Registry Management**
+
+</div>
+
+The Font Installation System provides automated installation of essential development fonts with proper Windows registry integration and font cache management.
+
+### 📝 Supported Fonts
+
+<div align="center">
+
+| Font Family | File Size | Features | Use Case |
+|-------------|-----------|----------|----------|
+| **Hack Nerd Font** | ~100MB | Powerline glyphs, Programming ligatures | Terminal, Code editors |
+| **JetBrains Mono** | ~80MB | Enhanced readability, Modern design | IDEs, Text editors |
+
+</div>
+
+<details>
+<summary><strong>🔍 Font Features Details</strong></summary>
+
+**Hack Nerd Font:**
+- Complete Nerd Font icon collection (3,000+ glyphs)
+- Powerline symbols for enhanced terminal experience
+- Multiple weights (Regular, Bold, Italic, Bold Italic)
+- Optimized for programming and terminal applications
+
+**JetBrains Mono:**
+- Designed specifically for developers
+- Increased height for better readability
+- Clear distinction between similar characters (0/O, 1/l/I)
+- Professional appearance for code presentation
+
+</details>
+
+### ⚙️ Installation Features
+
+<table>
+<tr>
+<td width="50%">
+
+**🔧 Installation Options**
+- System-wide installation (default)
+- Per-user installation option
+- Administrator privilege handling
+- Force reinstall capability
+- Automatic ZIP extraction
+
+**🛡️ Safety & Management**
+- Font existence verification
+- Registry validation and cleanup
+- Font cache refresh automation
+- Backup and rollback support
+
+</td>
+<td width="50%">
+
+**🎯 Technical Features**
+- Multiple font format support (TTF, OTF, TTC)
+- Recursive ZIP file processing
+- Windows font folder management
+- Registry-based font registration
+- Service restart for cache refresh
+
+**📊 Progress Tracking**
+- Real-time installation feedback
+- Detailed error reporting
+- Installation summary statistics
+- Font verification confirmation
+
+</td>
+</tr>
+</table>
+
+### 💻 Usage Examples
+
+<div align="center">
+
+**Choose Your Installation Method**
+
+</div>
+
+#### 🌐 Method 1: Direct Execution (Requires Assets)
+```powershell
+# Run from local repository (after cloning)
+.\Install-Fonts.ps1
+
+# With custom parameters
+.\Install-Fonts.ps1 -SystemWide $true -ForceReinstall $true
+```
+
+#### 📁 Method 2: Custom Font Selection
+```powershell
+# Install specific fonts only
+.\Install-Fonts.ps1 -FontZips @("Hack.zip") -SystemWide $true
+
+# Per-user installation
+.\Install-Fonts.ps1 -SystemWide $false -ForceReinstall $false
+```
+
+#### 🔧 Method 3: Advanced Configuration
+```powershell
+# Custom source folder and selective installation
+.\Install-Fonts.ps1 -FontZips @("JetBrainsMono.zip") -SourceFolder "C:\CustomFonts" -SystemWide $true -ForceReinstall $true
+```
+
+### 🎯 Installation Parameters
+
+<div align="center">
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| **FontZips** | String Array | `@("Hack.zip", "JetBrainsMono.zip")` | Font ZIP files to install |
+| **SourceFolder** | String | `Assets` folder | Location of font ZIP files |
+| **SystemWide** | Switch | `$true` | Install fonts system-wide |
+| **ForceReinstall** | Switch | `$true` | Reinstall existing fonts |
+
+</div>
+
+### 🛡️ Requirements & Permissions
+
+<div align="center">
+
+| Requirement | System-Wide | Per-User | Note |
+|-------------|-------------|----------|------|
+| **Administrator** | ✅ Required | ❌ Not needed | UAC elevation prompt |
+| **Font Assets** | ✅ Required | ✅ Required | ZIP files in Assets folder |
+| **PowerShell** | 5.1+ | 5.1+ | Windows PowerShell or PowerShell Core |
+| **Windows Version** | 10/11 | 10/11 | Modern font management APIs |
+
+</div>
+
 ## 🏗️ Winfig Bootstrap System
 
 > **Enterprise-grade Windows development environment configuration platform**
@@ -458,75 +605,211 @@ Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Win
 
 </div>
 
-## 🔄 Complete Workflow Guide
+## 🎯 Complete Setup Guide
 
 <div align="center">
 
-**🎯 From Fresh Windows Installation to Fully Configured Development Environment**
+**🚀 From Fresh Windows Installation to Professional Development Environment**
+
+*The definitive guide to transform your Windows 11 system using the complete Winfig toolkit*
 
 </div>
 
-### 📋 Recommended Implementation Sequence
+### � Recommended Script Sequence
+
+<div align="center">
+
+**📋 Follow this exact order for optimal results**
+
+</div>
 
 <table>
 <tr>
-<td width="33%">
+<td width="25%">
 
-**🚀 Phase 1: Installation**
-1. Boot Windows 11 installer
-2. Use registry bypass commands
-3. Complete Windows setup
-4. First boot configuration
-
-</td>
-<td width="33%">
-
-**🧹 Phase 2: Optimization**
-1. Run Debloat script
-2. Remove bloatware apps
-3. Apply registry tweaks
-4. Configure Winutil presets
+**�️ Phase 1: Installation**
+1. **Windows 11 Bypass**
+   - Boot from install media
+   - Execute registry commands
+   - Complete installation
 
 </td>
-<td width="34%">
+<td width="25%">
 
-**🏗️ Phase 3: Development Setup**
-1. Launch Bootstrap system
-2. Install package managers
-3. Setup Git environment
-4. Clone development tools
+**🧹 Phase 2: System Cleanup**
+1. **Debloat Script**
+   - Remove bloatware apps
+   - Apply registry tweaks
+   - Optimize performance
+
+</td>
+<td width="25%">
+
+**🏗️ Phase 3: Development**
+1. **Bootstrap System**
+   - Install package managers
+   - Setup Git environment
+   - Clone repositories
+
+</td>
+<td width="25%">
+
+**🔤 Phase 4: Fonts**
+1. **Font Installation**
+   - Install development fonts
+   - Configure system fonts
+   - Refresh font cache
 
 </td>
 </tr>
 </table>
 
-### 🎯 Integrated Execution Strategy
-
-```powershell
-# Step 1: Clean and optimize fresh Windows installation
-Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1" | Invoke-Expression
-
-# Step 2: When prompted, choose to run Bootstrap for complete dev environment
-# (This happens automatically within the Debloat script workflow)
-
-# Alternative: Run Bootstrap independently for development setup only
-Invoke-RestMethod -Uri "https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1" | Invoke-Expression
-```
-
-### ⏱️ Complete Setup Timeline
+### �️ Execution Commands
 
 <div align="center">
 
-| Phase | Component | Time Required | Result |
-|-------|-----------|---------------|---------|
-| **Installation** | Registry Bypass | 2 minutes | Bypass hardware requirements |
-| **Optimization** | Debloat + Registry | 3-5 minutes | Clean, optimized system |
-| **Development** | Bootstrap Setup | 4-7 minutes | Full development environment |
-| **Configuration** | Winutil Integration | 5-10 minutes | Professional customization |
-
-**🕐 Total Time: ~15-25 minutes for complete transformation**
+**Copy and execute these commands in the correct sequence**
 
 </div>
+
+#### 🖥️ Step 1: Windows 11 Installation Bypass
+```batch
+# During Windows 11 installation (Shift + F10)
+reg add "HKLM\SYSTEM\Setup\LabConfig" /v BypassTPMCheck /t REG_DWORD /d 1 /f && reg add "HKLM\SYSTEM\Setup\LabConfig" /v BypassRAMCheck /t REG_DWORD /d 1 /f && reg add "HKLM\SYSTEM\Setup\LabConfig" /v BypassSecureBootCheck /t REG_DWORD /d 1 /f && reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE\BypassNRO" /v NetworkRequirement /t REG_DWORD /d 0 /f
+```
+
+#### 🧹 Step 2: System Debloating & Optimization
+```powershell
+# After Windows installation and first boot
+irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1|iex
+
+# This script includes options to launch Bootstrap and Winutil
+# Choose 'Y' when prompted for complete integration
+```
+
+#### 🏗️ Step 3: Development Environment (Optional - if not done via Debloat)
+```powershell
+# Run independently if you skipped it in Debloat script
+irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1|iex
+```
+
+#### 🔤 Step 4: Font Installation
+```powershell
+# After cloning repository via Bootstrap
+cd "C:\Users\$env:USERNAME\Documents\Winfig"
+.\Install-Fonts.ps1 -SystemWide $true -ForceReinstall $true
+
+# Or download repository manually first
+git clone https://github.com/Armoghan-ul-Mohmin/Winfig.git
+cd Winfig
+.\Install-Fonts.ps1
+```
+
+### ⚙️ Alternative Workflows
+
+<div align="center">
+
+**🎯 Choose the workflow that best fits your needs**
+
+</div>
+
+#### 🚀 **Workflow A: Complete Automation (Recommended)**
+```powershell
+# 1. Use registry bypass during installation
+# 2. Run integrated Debloat script with all options
+irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1|iex
+# 3. Choose 'Y' for Bootstrap when prompted
+# 4. Choose 'Y' for Winutil when prompted
+# 5. Navigate to cloned repository and run font installer
+.\Install-Fonts.ps1
+```
+
+#### 🎛️ **Workflow B: Selective Execution**
+```powershell
+# 1. Registry bypass (during installation)
+# 2. Debloat only
+irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1|iex
+# Choose 'N' for Bootstrap and Winutil
+
+# 3. Manual Bootstrap (when ready)
+irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.ps1|iex
+
+# 4. Font installation
+.\Install-Fonts.ps1
+
+# 5. Winutil (optional)
+iwr -useb https://christitus.com/win | iex
+```
+
+#### 🔧 **Workflow C: Advanced Users**
+```powershell
+# 1. Registry bypass (during installation)
+# 2. Clone repository manually
+git clone https://github.com/Armoghan-ul-Mohmin/Winfig.git
+cd Winfig
+
+# 3. Run scripts individually with custom parameters
+.\Debloat.ps1
+.\bootstrap.ps1
+.\Install-Fonts.ps1 -SystemWide $false -FontZips @("Hack.zip")
+```
+
+### ⏱️ Execution Timeline
+
+<div align="center">
+
+**🕐 Complete transformation timeline with all components**
+
+</div>
+
+| Phase | Component | Duration | Requirements | Result |
+|-------|-----------|----------|--------------|---------|
+| **🖥️ Installation** | Registry Bypass | 2 min | Windows Install Media | Hardware bypass enabled |
+| **🧹 Debloating** | App Removal + Registry | 3-5 min | Internet connection | Clean, optimized system |
+| **🏗️ Bootstrap** | Dev Environment | 4-7 min | Admin privileges | Complete dev setup |
+| **⚙️ Winutil** | Advanced Config | 5-10 min | Admin privileges | Professional customization |
+| **🔤 Fonts** | Font Installation | 2-3 min | Local repository | Professional fonts |
+
+<div align="center">
+
+**🎯 Total Time: 16-27 minutes for complete professional setup**
+
+*Note: Times may vary based on internet speed and system performance*
+
+</div>
+
+### 🛡️ Safety Recommendations
+
+<div align="center">
+
+**⚠️ Important considerations for safe execution**
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+**✅ Before Starting**
+- Create system restore point
+- Ensure stable internet connection
+- Run PowerShell as Administrator
+- Close unnecessary applications
+- Have Windows installation media ready
+
+</td>
+<td width="50%">
+
+**⚠️ During Execution**
+- Don't interrupt running scripts
+- Monitor for error messages
+- Keep UAC prompts enabled
+- Allow Windows Defender exclusions
+- Restart when prompted
+
+</td>
+</tr>
+</table>
 
 ## Troubleshooting Failed Installations
 If Windows 11 installation fails due to hardware requirements:

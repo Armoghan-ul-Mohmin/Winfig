@@ -71,9 +71,16 @@
     },
     {
         "name": "Rust Programming Language",
-        "id": "Rustlang.Rust",
+        "id": "Rustlang.Rust.GNU",
         "description": "Systems programming language focused on safety, speed, and concurrency.",
         "homepage": "https://www.rust-lang.org/",
+        "permission": false
+    },
+    {
+        "name": "C++ Programming Language",
+        "id": "Microsoft.VisualCppBuildTools",
+        "description": "C++ build tools including MSVC compiler, libraries, and CMake support.",
+        "homepage": "https://visualstudio.microsoft.com/visual-cpp-build-tools/",
         "permission": false
     },
     {
@@ -127,7 +134,7 @@
     },
     {
         "name": "UniGet UI - Package Manager",
-        "id": "UniGet.UniGetUI",
+        "id": "MartiCliment.UniGetUI",
         "description": "Graphical interface for managing software packages across multiple package managers.",
         "homepage": "https://uniget.org/",
         "permission": false

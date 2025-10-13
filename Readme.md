@@ -18,7 +18,7 @@
 
 **Complete Windows 11 configuration ecosystem for clean installations and enterprise-ready development environments**
 
-*Bypass installation requirements • Remove bloatware • Optimize system performance • Install developer fonts • Apply custom cursors • Setup development tools • Enterprise bootstrap system*
+*Bypass installation requirements • Remove bloatware • Optimize system performance • Install developer fonts • Apply custom cursors • Deploy essential tools • Setup development environment • Enterprise bootstrap system*
 
 </div>
 
@@ -46,6 +46,10 @@
   - [Available Cursor Themes](#-available-cursor-themes)
   - [Installation Process](#️-installation-process)
   - [Usage Guide](#-usage-guide)
+- [Tools Installation System](#️-tools-installation-system)
+  - [Development Tools](#-development-tools)
+  - [System Utilities](#️-system-utilities)
+  - [Installation Features](#️-installation-features-1)
 - [Complete Setup Guide](#-complete-setup-guide)
   - [Recommended Script Sequence](#-recommended-script-sequence)
   - [Alternative Workflows](#️-alternative-workflows)
@@ -72,6 +76,7 @@
 - **52+ App Removal** - Comprehensive bloatware elimination
 - **Professional Fonts** - Developer-grade font installation
 - **Custom Cursors** - Modern cursor theme installation
+- **Essential Tools** - 46+ developer and system utilities
 - **Safe Execution** - Only removes existing applications
 - **Error Handling** - Graceful failure recovery
 
@@ -88,6 +93,7 @@
 - **Bootstrap System** - Enterprise development environment setup
 - **Font Management** - Professional font installation system
 - **Cursor Theming** - Modern cursor installation and management
+- **Tool Installation** - Advanced package management system
 - **Package Manager Integration** - Chocolatey + Winget automation
 - **Git Integration** - Automatic version control setup
 - **Custom Presets** - Pre-configured optimization profiles
@@ -895,6 +901,279 @@ Choose between Dark and Light variants:
 - **✅ Error Handling** - Graceful failure recovery with user guidance
 - **✅ Force Removal** - Safe cleanup of existing cursor installations
 
+## 🛠️ Tools Installation System
+
+> **Advanced package management system for comprehensive software deployment**
+
+<div align="center">
+
+**🎯 46+ Essential Tools • Intelligent Installation • Permission Management**
+
+*Streamline your development environment with curated software collections*
+
+</div>
+
+The Tools Installation System provides automated installation of essential development tools, system utilities, and applications with intelligent package detection, permission management, and cross-platform package manager support.
+
+### 💻 Development Tools
+
+<div align="center">
+
+**🚀 Core Development Environment**
+
+</div>
+
+<table>
+<tr>
+<td width="25%">
+
+#### 📝 **Code Editors & IDEs**
+- 🎨 **Visual Studio Code** - Feature-rich editor with IntelliSense
+- 📄 **Sublime Text 4** - High-performance text editor
+- 🔥 **Neovim** - Hyperextensible Vim-based editor
+- 🎯 **Neovide** - Modern Neovim GUI with animations
+
+</td>
+<td width="25%">
+
+#### 🔧 **Version Control & Git**
+- 📚 **Git** - Distributed version control system
+- 💼 **GitHub CLI** - Official GitHub command-line tool
+- 🎭 **LazyGit** - Beautiful terminal Git interface
+- 📊 **OneFetch** - Git repository stats with ASCII art
+
+</td>
+<td width="25%">
+
+#### 🖥️ **Terminal & Shell**
+- ⚡ **Windows Terminal** - Modern terminal application
+- 🔋 **PowerShell** - Cross-platform automation shell
+- 🌟 **Starship** - Customizable shell prompt
+- 🚀 **Zoxide** - Smart directory navigation
+
+</td>
+<td width="25%">
+
+#### 🌐 **Programming Languages**
+- 🐹 **Go** - Statically typed compiled language
+- 🦀 **Rust** - Systems programming language
+- 🐍 **uv** - Ultra-fast Python package manager
+- 📦 **nvm-windows** - Node.js version manager
+
+</td>
+</tr>
+</table>
+
+### 🔧 System Utilities
+
+<div align="center">
+
+**⚙️ Essential System Tools & Utilities**
+
+</div>
+
+<table>
+<tr>
+<td width="25%">
+
+#### 🛠️ **System Tools**
+- 🔧 **PowerToys** - Windows system utilities
+- ⚡ **gsudo** - Windows sudo implementation
+- 📊 **Ntop** - Htop-like system monitor
+- 🎨 **Windhawk** - Windows customization tool
+
+</td>
+<td width="25%">
+
+#### 📁 **File Management**
+- 📦 **7-Zip** - High-compression file archiver
+- 🔍 **Super File** - Modern dual-pane file manager
+- 🏷️ **OpenHashTab** - File integrity verification
+- 📸 **ExifTool** - Metadata editor
+
+</td>
+<td width="25%">
+
+#### 🔍 **Search & Navigation**
+- 🔎 **fzf** - Command-line fuzzy finder
+- ⚡ **ripgrep** - Ultra-fast text search
+- 🦇 **Bat** - Enhanced file viewer with syntax highlighting
+- 📋 **DevToys** - Developer utilities toolkit
+
+</td>
+<td width="25%">
+
+#### 🌐 **Network & Communication**
+- 🌐 **cURL** - Data transfer tool
+- 💬 **Discord** - Communication platform
+- 📧 **Thunderbird** - Email and calendar client
+- 🔒 **OpenVPN** - VPN client
+
+</td>
+</tr>
+</table>
+
+### 📱 Productivity Applications
+
+<div align="center">
+
+**💼 Professional Productivity Suite**
+
+</div>
+
+<table>
+<tr>
+<td width="33%">
+
+#### 🎯 **Productivity & Office**
+- 📝 **Notion** - All-in-one workspace
+- 📷 **ShareX** - Advanced screenshot tool
+- ⚡ **AutoHotkey** - Automation scripting
+- 📊 **Fastfetch** - System information display
+
+</td>
+<td width="33%">
+
+#### 🌐 **Web Browsers & Download**
+- 🔒 **Zen Browser** - Privacy-focused browser
+- 📥 **HTTrack** - Website copier for offline browsing
+- 🖥️ **AnyDesk** - Remote desktop solution
+- 📹 **Zoom** - Video conferencing platform
+
+</td>
+<td width="34%">
+
+#### ☁️ **Cloud Storage & Sync**
+- ☁️ **OneDrive** - Microsoft cloud storage
+- 🔵 **Google Drive** - Google cloud storage
+- 📦 **Dropbox** - File synchronization service
+- 🔧 **UniGet UI** - Universal package manager GUI
+
+</td>
+</tr>
+</table>
+
+### ⚙️ Installation Features
+
+<div align="center">
+
+**🎛️ Advanced Package Management & Intelligent Installation**
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+**🚀 Smart Installation**
+- Dual package manager support (WinGet + Chocolatey)
+- Intelligent package detection and conflict resolution
+- Permission-based installation with user prompts
+- Automatic retry mechanism with configurable delays
+- Cached package scanning for improved performance
+
+**🛡️ Safety & Validation**
+- Administrator privilege verification
+- Pre-installation package existence checks
+- Graceful error handling with detailed logging
+- Force installation option for package replacement
+- Safe execution with rollback capabilities
+
+</td>
+<td width="50%">
+
+**📊 Progress & Monitoring**
+- Real-time installation progress tracking
+- Comprehensive summary statistics and reporting
+- Detailed logging with timestamped entries
+- Color-coded output for enhanced readability
+- Installation failure analysis and recommendations
+
+**🎯 Customization Options**
+- Selective tool installation with permission filtering
+- JSON-based configuration for package management
+- Skip permission prompts for automated deployment
+- Configurable retry attempts and timeout settings
+- Cross-platform PowerShell compatibility (5.1 & 7.x)
+
+</td>
+</tr>
+</table>
+
+### 💻 Usage Examples
+
+<div align="center">
+
+**Choose Your Installation Strategy**
+
+</div>
+
+#### 🚀 Method 1: Complete Tool Suite Installation
+```powershell
+# Install all tools with permission prompts
+cd "C:\Users\$env:USERNAME\Documents\Winfig"
+.\Install-Tools.ps1
+
+# The script will guide you through each tool with permission prompts
+# Choose which tools to install based on your needs
+```
+
+#### ⚡ Method 2: Automated Installation (Skip Prompts)
+```powershell
+# Install all permitted tools automatically
+.\Install-Tools.ps1 -SkipPermissions
+
+# Force reinstall existing packages
+.\Install-Tools.ps1 -Force -SkipPermissions
+```
+
+#### 🔧 Method 3: Advanced Configuration
+```powershell
+# Custom logging and advanced options
+.\Install-Tools.ps1 -Force $true -SkipPermissions $false -LogPath "C:\CustomLogs"
+
+# Detailed parameter control for enterprise deployment
+```
+
+### 🎯 Installation Parameters
+
+<div align="center">
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| **Force** | Switch | `$false` | Force reinstall existing packages |
+| **SkipPermissions** | Switch | `$false` | Skip user permission prompts |
+| **LogPath** | String | Auto-generated | Custom log file location |
+
+</div>
+
+### 📋 Package Configuration
+
+The system uses JSON configuration files for flexible package management:
+
+**📁 WinGet Packages**: `config/winget-packages.json` - 31 applications
+**📦 Chocolatey Packages**: `config/choco-packages.json` - 15 specialized tools
+
+Each package includes:
+- **Detailed descriptions** - Clear explanations of tool functionality
+- **Homepage links** - Direct access to official documentation
+- **Permission settings** - Fine-grained installation control
+- **Category organization** - Logical grouping for easy management
+
+### 🛡️ Installation Requirements
+
+<div align="center">
+
+| Requirement | Status | Description |
+|-------------|---------|-------------|
+| **Administrator Rights** | ⚠️ Recommended | Required for system-wide tool installation |
+| **Package Managers** | ✅ Auto-Install | WinGet and/or Chocolatey (auto-detected) |
+| **Internet Connection** | ✅ Required | For downloading packages and dependencies |
+| **PowerShell 5.1+** | ✅ Required | Windows PowerShell or PowerShell Core |
+| **Configuration Files** | ✅ Required | JSON files in config directory |
+
+</div>
+
 ## 🎯 Complete Setup Guide
 
 <div align="center">
@@ -915,7 +1194,7 @@ Choose between Dark and Light variants:
 
 <table>
 <tr>
-<td width="25%">
+<td width="16.66%">
 
 **�️ Phase 1: Installation**
 1. **Windows 11 Bypass**
@@ -924,7 +1203,7 @@ Choose between Dark and Light variants:
    - Complete installation
 
 </td>
-<td width="25%">
+<td width="16.66%">
 
 **🧹 Phase 2: System Cleanup**
 1. **Debloat Script**
@@ -933,7 +1212,7 @@ Choose between Dark and Light variants:
    - Optimize performance
 
 </td>
-<td width="25%">
+<td width="16.66%">
 
 **🏗️ Phase 3: Development**
 1. **Bootstrap System**
@@ -942,13 +1221,31 @@ Choose between Dark and Light variants:
    - Clone repositories
 
 </td>
-<td width="25%">
+<td width="16.66%">
 
 **🔤 Phase 4: Fonts**
 1. **Font Installation**
    - Install development fonts
    - Configure system fonts
    - Refresh font cache
+
+</td>
+<td width="16.66%">
+
+**🖱️ Phase 5: Cursors**
+1. **Cursor Installation**
+   - Apply modern themes
+   - Interactive selection
+   - System integration
+
+</td>
+<td width="16.66%">
+
+**🛠️ Phase 6: Tools**
+1. **Tools Installation**
+   - Deploy essential software
+   - Development utilities
+   - System enhancements
 
 </td>
 </tr>
@@ -1008,6 +1305,22 @@ cd "C:\Users\$env:USERNAME\Documents\Winfig"
 # 4. Right-click Install.inf and choose "Install"
 ```
 
+#### 🛠️ Step 6: Essential Tools Installation
+```powershell
+# Install comprehensive development and system tools
+cd "C:\Users\$env:USERNAME\Documents\Winfig"
+.\Install-Tools.ps1
+
+# Interactive installation with permission prompts
+# Or for automated installation:
+.\Install-Tools.ps1 -SkipPermissions
+
+# The script will install 46+ essential tools including:
+# - Development environments (VS Code, Git, Terminal tools)
+# - System utilities (PowerToys, 7-Zip, File managers)
+# - Productivity applications (ShareX, AutoHotkey, DevToys)
+```
+
 ### ⚙️ Alternative Workflows
 
 <div align="center">
@@ -1027,6 +1340,8 @@ irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/Debloat.ps1
 .\Install-Fonts.ps1
 # 6. Run cursor installation for modern themes
 .\Cursors.ps1
+# 7. Install essential development and system tools
+.\Install-Tools.ps1
 ```
 
 #### 🎛️ **Workflow B: Selective Execution**
@@ -1045,7 +1360,10 @@ irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.p
 # 5. Cursor installation
 .\Cursors.ps1
 
-# 6. Winutil (optional)
+# 6. Tools installation
+.\Install-Tools.ps1
+
+# 7. Winutil (optional)
 iwr -useb https://christitus.com/win | iex
 ```
 
@@ -1060,7 +1378,10 @@ cd Winfig
 .\Debloat.ps1
 .\bootstrap.ps1
 .\Install-Fonts.ps1 -SystemWide $false -FontZips @("Hack.zip")
+.\Cursors.ps1
 .\Cursors.ps1 -Force $true
+.\Install-Tools.ps1
+.\Install-Tools.ps1 -SkipPermissions
 ```
 
 ### ⏱️ Execution Timeline
@@ -1079,10 +1400,11 @@ cd Winfig
 | **⚙️ Winutil** | Advanced Config | 5-10 min | Admin privileges | Professional customization |
 | **🔤 Fonts** | Font Installation | 2-3 min | Local repository | Professional fonts |
 | **🖱️ Cursors** | Cursor Themes | 1-2 min | Admin privileges | Modern cursor themes |
+| **🛠️ Tools** | Essential Software | 10-25 min | Internet connection | 46+ development & system tools |
 
 <div align="center">
 
-**🎯 Total Time: 17-29 minutes for complete professional setup**
+**🎯 Total Time: 22-44 minutes for complete professional setup**
 
 *Note: Times may vary based on internet speed and system performance*
 

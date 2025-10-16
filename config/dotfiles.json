@@ -16,5 +16,17 @@
         "source": "git/catppuchin.gitconfig",
         "target": "$env:USERPROFILE\\.catppuchin.gitconfig",
         "description": "Catppuchin's Git configuration file"
+    },
+    {
+        "type": "file",
+        "source": "bat/config",
+        "target": "$env:USERPROFILE\\AppData\\Roaming\\bat\\config",
+        "description": "Bat configuration file"
+    },
+    {
+        "type": "folder",
+        "source": "bat/config/themes",
+        "target": "$env:USERPROFILE\\AppData\\Roaming\\bat\\themes",
+        "description": "Bat themes folder"
     }
 ]

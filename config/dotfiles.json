@@ -1,0 +1,20 @@
+[
+    {
+        "type": "file",
+        "source": "git/config",
+        "target": "$env:USERPROFILE\\.gitconfig",
+        "description": "Git configuration file"
+    },
+    {
+        "type": "file",
+        "source": "git/gitignore",
+        "target": "$env:USERPROFILE\\.gitignore_global",
+        "description": "Global Git ignore file"
+    },
+    {
+        "type": "file",
+        "source": "git/catppuchin.gitconfig",
+        "target": "$env:USERPROFILE\\.catppuchin.gitconfig",
+        "description": "Catppuchin's Git configuration file"
+    }
+]

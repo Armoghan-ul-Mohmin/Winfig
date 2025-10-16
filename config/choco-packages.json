@@ -90,6 +90,20 @@
         "permission": true
     },
     {
+        "name": "Tig - Text-mode Interface for Git",
+        "id": "tig",
+        "description": "Text-mode interface for Git repositories, providing a visual way to browse history and stage changes.",
+        "homepage": "https://jonas.github.io/tig/",
+        "permission": true
+    },
+    {
+        "name": "Delta - Syntax-highlighting Pager",
+        "id": "git-delta",
+        "description": "Syntax-highlighting pager for Git, providing a better diff experience.",
+        "homepage": "https://github.com/dandavison/delta",
+        "permission": true
+    },
+    {
         "name": "Windhawk - Windows Customizer",
         "id": "windhawk",
         "description": "Advanced Windows customization tool with plugin system for enhancing desktop experience.",

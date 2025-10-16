@@ -1,0 +1,138 @@
+[user]
+    # Set your name and email globally:
+    # git config --global user.name "Your Name"
+    # git config --global user.email "your.email@example.com"
+
+[include]
+    path = ~/.catppuchin.gitconfig
+
+[init]
+    defaultBranch = main
+
+[core]
+    pager = delta
+    autocrlf = input                                # Normalize line endings (use 'true' on Windows if needed)
+    editor = code --wait                            # Set VS Code as default editor
+    excludesfile = ~/.gitignore_global              # Global gitignore file
+    filemode = false                                # Ignore file mode changes (useful on Windows)
+    whitespace = trailing-space,space-before-tab    # Highlight whitespace issues
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    features = catppuccin-frappe
+    navigate = true
+    side-by-side = false
+    line-numbers = true
+    syntax-theme = catppuccin-frappe   # Use your catppuccin theme for syntax highlighting
+    light = false                      # Use dark theme
+
+[merge]
+    conflictstyle = diff3
+    tool = vscode                      # Use VS Code as merge tool
+
+[mergetool "vscode"]
+    cmd = code --wait --merge "$REMOTE" "$LOCAL" "$BASE" "$MERGED"
+    keepBackup = false
+    trustExitCode = true
+
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+
+[color]
+    ui = auto
+    branch = auto
+    diff = auto
+    status = auto
+
+[alias]
+    i  = init                                       # Short alias for git init
+    s  = status                                     # Short alias for git status
+    co = checkout                                   # Short alias for git checkout
+    sw = switch                                     # Short alias for git switch (modern branch switching)
+    br = branch                                     # Short alias for git branch
+    c  = commit                                     # Short alias for git commit
+    cm = commit -m                                  # Quick commit with message
+    lg = log --oneline --graph --decorate --all     # Pretty log
+    last = log -1 HEAD                              # Show last commit
+    unstage = reset HEAD --                         # Unstage files
+    undo = reset --soft HEAD~1                      # Undo last commit but keep changes staged
+    amend = commit --amend                          # Amend last commit
+    force-amend = commit --amend --force            # Force Amend last commit
+    a  = add --all                                  # Add all changes
+    ap = add -p                                     # Add patches interactively
+    cp = cherry-pick                                # Cherry-pick commits
+    df = diff                                       # Short alias for diff
+    dc = diff --cached                              # Show staged changes
+    rb = rebase                                     # Short alias for rebase
+    rv = remote -v                                  # Show remotes
+    ss = status -s                                  # Short status
+    t  = !tig                                       # Launch tig (text-mode interface for git)
+    ts = !tig status                                # Tig status view
+    tb = !tig blame                                 # Tig blame view
+    tl = !tig log                                   # Tig log view
+
+[push]
+    default = simple            # Push current branch by default
+    followTags = false          # Push tags with commits
+
+[diff]
+    tool = delta                # Use delta as diff tool
+    mnemonicprefix = true       # Use mnemonic prefixes in diff output
+
+[status]
+    short = false               # Show status in short format
+    showUntrackedFiles = all    # Show all untracked files
+
+[fetch]
+    prune = true               # Remove deleted branches on fetch
+
+[pull]
+    rebase = false             # Use merge (not rebase) on pull
+
+[rebase]
+    autoStash = true           # Automatically stash before rebase
+
+[tag]
+    sort = version:refname     # Sort tags by version
+
+[http]
+    sslVerify = true           # Verify SSL certificates
+
+[commit]
+    gpgSign = true             # Enable GPG signing (set to true if you use GPG)
+
+[advice]
+    statusHints = true         # Show helpful status hints
+
+[branch]
+    autoSetupMerge = always    # Automatically set up tracking branches
+    autoSetupRebase = never    # Don't automatically rebase on pull
+
+[log]
+    date = relative            # Use relative dates in log output
+    decorate = short           # Show branch/tag names in short format
+
+[grep]
+    lineNumber = true          # Show line numbers in git grep
+    patternType = extended     # Use extended regex patterns
+
+[help]
+    autoCorrect = 1            # Auto-correct typos after 1 second
+
+[rerere]
+    enabled = true             # Enable reuse recorded resolution
+    autoUpdate = true          # Automatically stage resolved conflicts
+
+[url "https://github.com/"]
+    insteadOf = github:        # Use 'github:user/repo' shortcut for GitHub
+
+# Tig configuration (text-mode interface for git)
+[tig "bind"]
+    generic = g move-first-line    # 'g' to go to first line
+    generic = G move-last-line     # 'G' to go to last line
+    main = G !git gc               # 'G' in main view to run garbage collection

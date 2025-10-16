@@ -50,6 +50,10 @@
   - [Development Tools](#-development-tools)
   - [System Utilities](#️-system-utilities)
   - [Installation Features](#️-installation-features-1)
+- [Dotfiles Management System](#️-dotfiles-management-system)
+  - [Configuration System](#-configuration-system)
+  - [Installation Features](#️-installation-features-2)
+  - [Usage Examples](#-usage-examples-2)
 - [Complete Setup Guide](#-complete-setup-guide)
   - [Recommended Script Sequence](#-recommended-script-sequence)
   - [Alternative Workflows](#️-alternative-workflows)
@@ -1174,7 +1178,178 @@ Each package includes:
 
 </div>
 
-## 🎯 Complete Setup Guide
+## � Dotfiles Management System
+
+> **Professional dotfiles management with symbolic links and smart backup system**
+
+<div align="center">
+
+**🎯 Automated Symlinks • Intelligent Backups • JSON Configuration**
+
+</div>
+
+The Dotfiles Management System provides enterprise-grade configuration file management through symbolic links, ensuring your development environment configurations are properly synchronized and maintained across your system.
+
+### 📋 Configuration System
+
+<div align="center">
+
+**🔧 JSON-Based Configuration Management**
+
+</div>
+
+The system uses a simple JSON configuration file located at `config/Dotfiles.json` to define which configuration files should be managed. This approach provides flexibility and easy maintenance of your dotfiles setup.
+
+<table>
+<tr>
+<td width="50%">
+
+**📄 Configuration Structure**
+```json
+[
+    {
+        "type": "file",
+        "source": "git/config",
+        "target": "$env:USERPROFILE\\.gitconfig",
+        "description": "Git configuration file"
+    },
+    {
+        "type": "folder",
+        "source": "vscode/snippets",
+        "target": "$env:APPDATA\\Code\\User\\snippets",
+        "description": "VS Code snippets folder"
+    }
+]
+```
+
+</td>
+<td width="50%">
+
+**🎯 Configuration Properties**
+- **type**: `file` or `folder` - Type of item to link
+- **source**: Relative path from `Dotfiles/` directory
+- **target**: Full destination path with environment variables
+- **description**: Human-readable description for progress display
+
+**🔧 Environment Variables Supported**
+- `$env:USERPROFILE` - User home directory
+- `$env:APPDATA` - Application data folder
+- `$env:LOCALAPPDATA` - Local application data
+- `$env:PROGRAMFILES` - Program Files directory
+
+</td>
+</tr>
+</table>
+
+### ⚙️ Installation Features
+
+<table>
+<tr>
+<td width="50%">
+
+**🛡️ Smart Backup System**
+- Interactive backup prompts for existing files/folders
+- Automatic `.bak` extension with timestamp if needed
+- Force mode for automated backups without prompts
+- Skip backup option for advanced users
+- Safe rollback capabilities
+
+**🔗 Symbolic Link Management**
+- Automatic detection of existing correct symlinks
+- Support for both file and directory symlinks
+- Windows junction creation for folder types
+- Administrator privilege handling
+- Symlink integrity validation
+
+</td>
+<td width="50%">
+
+**📊 Progress & Status Tracking**
+- Real-time installation progress with detailed feedback
+- Color-coded status messages (success, warning, error)
+- Comprehensive summary report with statistics
+- Detailed logging with timestamps
+- Error handling with graceful recovery
+
+**🎯 Advanced Features**
+- PowerShell variable expansion in JSON targets
+- Automatic target directory creation
+- Source validation before linking
+- Cross-platform PowerShell compatibility (5.1 & 7.x)
+- Professional status reporting matching Install-Tools style
+
+</td>
+</tr>
+</table>
+
+### 💻 Usage Examples
+
+<div align="center">
+
+**Choose Your Preferred Execution Method**
+
+</div>
+
+#### 🚀 Method 1: Standard Installation
+```powershell
+# Navigate to Winfig repository
+cd "C:\Users\$env:USERNAME\Documents\Winfig"
+
+# Run dotfiles installer (interactive mode - asks for backup confirmations)
+.\Dotfiles.ps1
+```
+> **Features**: Interactive backup prompts • Safe installation • User control over conflicts
+
+#### ⚡ Method 2: Force Installation (Auto-Backup)
+```powershell
+# Automatic backup without prompts
+.\Dotfiles.ps1 -Force
+```
+> **Features**: Automatic `.bak` file creation • No user prompts • Fast installation
+
+#### 🎯 Method 3: Skip Backups (Advanced Users)
+```powershell
+# Skip backup process entirely
+.\Dotfiles.ps1 -SkipBackup
+```
+> **Features**: Direct overwrite • No backup creation • Maximum speed
+
+#### 🔧 Method 4: Combined Flags
+```powershell
+# Force installation and skip backups
+.\Dotfiles.ps1 -Force -SkipBackup
+
+# Custom log location
+.\Dotfiles.ps1 -LogPath "C:\CustomLogs\dotfiles.log"
+```
+
+### 🎯 Installation Parameters
+
+<div align="center">
+
+| Parameter | Type | Default | Description |
+|-----------|------|---------|-------------|
+| **Force** | Switch | `$false` | Automatically backup existing files without prompts |
+| **SkipBackup** | Switch | `$false` | Skip backup creation entirely |
+| **LogPath** | String | Auto-generated | Custom location for log files |
+
+</div>
+
+### 🛡️ System Requirements
+
+<div align="center">
+
+| Requirement | Status | Description |
+|-------------|---------|-------------|
+| **Administrator Privileges** | ✅ Required | For creating symbolic links in system directories |
+| **Dotfiles Directory** | ✅ Required | `Dotfiles/` folder with your configuration files |
+| **JSON Configuration** | ✅ Required | `config/Dotfiles.json` configuration file |
+| **PowerShell 5.1+** | ✅ Required | Windows PowerShell or PowerShell Core |
+| **Windows 10/11** | ✅ Required | Modern symbolic link support |
+
+</div>
+
+## �🎯 Complete Setup Guide
 
 <div align="center">
 
@@ -1194,16 +1369,16 @@ Each package includes:
 
 <table>
 <tr>
-<td width="16.66%">
+<td width="14.28%">
 
-**�️ Phase 1: Installation**
+**🖥️ Phase 1: Installation**
 1. **Windows 11 Bypass**
    - Boot from install media
    - Execute registry commands
    - Complete installation
 
 </td>
-<td width="16.66%">
+<td width="14.28%">
 
 **🧹 Phase 2: System Cleanup**
 1. **Debloat Script**
@@ -1212,7 +1387,7 @@ Each package includes:
    - Optimize performance
 
 </td>
-<td width="16.66%">
+<td width="14.28%">
 
 **🏗️ Phase 3: Development**
 1. **Bootstrap System**
@@ -1221,7 +1396,7 @@ Each package includes:
    - Clone repositories
 
 </td>
-<td width="16.66%">
+<td width="14.28%">
 
 **🔤 Phase 4: Fonts**
 1. **Font Installation**
@@ -1230,7 +1405,7 @@ Each package includes:
    - Refresh font cache
 
 </td>
-<td width="16.66%">
+<td width="14.28%">
 
 **🖱️ Phase 5: Cursors**
 1. **Cursor Installation**
@@ -1239,13 +1414,22 @@ Each package includes:
    - System integration
 
 </td>
-<td width="16.66%">
+<td width="14.28%">
 
 **🛠️ Phase 6: Tools**
 1. **Tools Installation**
    - Deploy essential software
    - Development utilities
    - System enhancements
+
+</td>
+<td width="14.28%">
+
+**🏠 Phase 7: Dotfiles**
+1. **Configuration Management**
+   - Setup symbolic links
+   - Backup existing configs
+   - Environment synchronization
 
 </td>
 </tr>
@@ -1321,6 +1505,27 @@ cd "C:\Users\$env:USERNAME\Documents\Winfig"
 # - Productivity applications (ShareX, AutoHotkey, DevToys)
 ```
 
+#### 🏠 Step 7: Dotfiles Configuration
+```powershell
+# Setup development environment configurations with symbolic links
+cd "C:\Users\$env:USERNAME\Documents\Winfig"
+.\Dotfiles.ps1
+
+# Interactive installation with backup prompts (recommended)
+# Or for automated backup without prompts:
+.\Dotfiles.ps1 -Force
+
+# Skip backups entirely (advanced users):
+.\Dotfiles.ps1 -SkipBackup
+
+# The script will create symbolic links for:
+# - Git configuration files
+# - VS Code settings and snippets
+# - PowerShell profiles
+# - Terminal configurations
+# Note: Requires configuration in config/Dotfiles.json file
+```
+
 ### ⚙️ Alternative Workflows
 
 <div align="center">
@@ -1363,7 +1568,10 @@ irm https://raw.githubusercontent.com/Armoghan-ul-Mohmin/Winfig/main/bootstrap.p
 # 6. Tools installation
 .\Install-Tools.ps1
 
-# 7. Winutil (optional)
+# 7. Dotfiles configuration
+.\Dotfiles.ps1
+
+# 8. Winutil (optional)
 iwr -useb https://christitus.com/win | iex
 ```
 
@@ -1379,9 +1587,10 @@ cd Winfig
 .\bootstrap.ps1
 .\Install-Fonts.ps1 -SystemWide $false -FontZips @("Hack.zip")
 .\Cursors.ps1
-.\Cursors.ps1 -Force $true
 .\Install-Tools.ps1
 .\Install-Tools.ps1 -SkipPermissions
+.\Dotfiles.ps1
+.\Dotfiles.ps1 -Force -SkipBackup
 ```
 
 ### ⏱️ Execution Timeline
@@ -1401,10 +1610,11 @@ cd Winfig
 | **🔤 Fonts** | Font Installation | 2-3 min | Local repository | Professional fonts |
 | **🖱️ Cursors** | Cursor Themes | 1-2 min | Admin privileges | Modern cursor themes |
 | **🛠️ Tools** | Essential Software | 10-25 min | Internet connection | 46+ development & system tools |
+| **🏠 Dotfiles** | Configuration Links | 1-3 min | Admin privileges | Development environment configs |
 
 <div align="center">
 
-**🎯 Total Time: 22-44 minutes for complete professional setup**
+**🎯 Total Time: 23-47 minutes for complete professional setup**
 
 *Note: Times may vary based on internet speed and system performance*
 
